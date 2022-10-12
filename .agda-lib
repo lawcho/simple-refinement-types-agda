@@ -1,2 +1,4 @@
 include: src/ report/
 depend: standard-library
+-- type-checks with Agda 2.6.2.2, and this stdlib version:
+-- https://github.com/agda/agda-stdlib/tree/4b7e69b22ec698716f323fc24fc6bd1305ed47df

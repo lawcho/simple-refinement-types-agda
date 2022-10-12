@@ -1,3 +1,6 @@
+-- See Lang-λ.Algorithmic-Typing for general notes,
+-- comments in this file emphasize how Lang-λβ differs from Lang-λ
+
 open import Common.SMT-API
 
 module Lang-λβ.Algorithmic-Typing

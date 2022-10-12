@@ -92,9 +92,9 @@ vec_dist (x1 , y1) (x2 , y2) =
     sqrt $ r_sq ((x1 - x2) , (y1 - y2))
 ~~~
 
-More information on programming with refinement types can be found at the liquidhaskell website [@lh-website], we now turn to how these type systems are *implemented*.
+More information on programming with refinement types can be found at the LiquidHaskell website [@lh-website], we now turn to how these type systems are *implemented*.
 
-Jhala and Vazou [@refinement-tut] give a tutorial-style presentation of the theory behind refinement type systems, starting with a minimal STLC-like language and showing how to add features one by one.
+Jhala and Vazou [@refinement-tut] give a tutorial-style presentation of the theory behind refinement type systems, starting with a minimal Simply-Typed Lambda-Calculus-like language and showing how to add features one by one.
 
 Unfortunately, these type systems are described only semi-formally, using a combination of \LaTeX{} rules, pseudocode functions, and prose (e.g. [@fig:rules-syn; @fig:subst-defn; @fig:prose-defn]), which leave room for ambiguity and mistakes.
 
@@ -119,11 +119,11 @@ Fixes for various *bugs* in the paper
 Source code for this formalization (and report) can be found at <https://github.com/lawcho/simple-refinement-types-agda>
 
 
-![Paper's type-synthesis relation (defined using rule notation)](images/rules-syn.png){#fig:rules-syn}
+![Paper's [@refinement-tut] type-synthesis relation (defined using rule notation)](images/rules-syn.png){#fig:rules-syn}
 
-![Paper's "capture avoiding substitution" (defined using pseudocode)](images/subst-defn.png){#fig:subst-defn}
+![Paper's [@refinement-tut] "capture avoiding substitution" (defined using pseudocode)](images/subst-defn.png){#fig:subst-defn}
 
-![Fragment of paper's VC semantics (defined using prose)](images/prose-defn.png){#fig:prose-defn}
+![Fragment of Paper's [@refinement-tut] VC semantics (defined using prose)](images/prose-defn.png){#fig:prose-defn}
 
 :::: hidden ::::
 ```agda
@@ -372,7 +372,7 @@ The typing rules use *capture-avoiding substitution*, a notoriously fickle algor
 
 Fortunately, we don't actually need the full *substitution* algorithm -- the special case of *α-renaming* is sufficient (and easier to implement). This is possible since Lang-λβ is an *Administrative Normal Form* language^[i.e. a language where functions can only be applied to variables].
 
-This formalization implements (capture-avoiding) α-renaming using a brand new, stateless algorithm. Let's derive it now.
+This formalization implements (capture-avoiding) α-renaming using a slightly unusual algorithm. Let's derive it now.
 
 ### The new algorithm
 
@@ -472,6 +472,8 @@ where `_[_↔_]'` is (non-recursive) α-swapping on strings:
 ### Correctness
 
 I have not proved the correctness of the algorithm formally. Some unit tests can be found in `Lang-λ.Type.agda`.
+
+Note that this algorithm is not new -- see e.g. [@Pitts2001NominalLA], page 4.
 
 # Bugs found
 
@@ -620,9 +622,9 @@ Connecting a real SMT solver
 
 : to replace the mock, which needs to be expanded for each new example.
 
-Tidying up algorithmic typing
+Tidying up my implementation
 
-: which is currently implemented using an ad-hoc jumble of `map`$′$, the `id` monad, and `with` syntax. An advanced EDSL for writing decision procedures could really shine here.
+: of algorithmic typing, which is currently an ad-hoc jumble of `with` syntax, the `id` monad, and helper functions. An advanced EDSL for writing decision procedures could really shine here.
 
 # Bibliography
 

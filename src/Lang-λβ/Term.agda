@@ -1,3 +1,5 @@
+-- See Lang-λ.Term for general notes,
+-- comments in this file emphasize how Lang-λβ differs from Lang-λ
 
 module Lang-λβ.Term where
 open import Util.All
